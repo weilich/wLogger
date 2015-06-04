@@ -1,0 +1,17 @@
+
+
+<div class="container">
+    <h2>My Log</h2>
+ 
+    <ul class="list-group" ng-repeat="log in lstCtrl.myLoggers()">
+        <li class="list-group-item">
+            <span class="badge">14</span>
+            <div> {{log.logName}}</div>
+        </li>
+    </ul>
+
+    <a href="#/create/2" class="btn btn-info btn-lg">Add new log</a>
+
+
+</div>
+
