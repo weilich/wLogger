@@ -1,23 +1,19 @@
 angular.module('wloggerApp.services').
-    factory('logItem_service', [function($localStorage) {
+    factory('logItem_service', ['$log', function($log) {
+            if(Modernizr.localstorage == false)
+                $log.info("local storage not working");
 
         var logs = [
-                    {logId:1, logName:'Log 1', logStatus:'A'},
-                    {logId:2, logName:'log 2', logStatus:'A'},
-                    {logId:3, logName:'log 3', logStatus:'I'}
+                    //{logId:1, logName:'Log 1', logStatus:'A'},
+                    //{logId:2, logName:'log 2', logStatus:'A'},
+                    //{logId:3, logName:'log 3', logStatus:'I'}
                     ];
 
-        $localStorage.wLogger_myLogs = logs;
+       // localStorage["wLogger"] = JSON.stringify(logs);
 
         return{
             list: function(){
-                if ($localStorage.wLogger_myLogs == undefined)
-                {
-                    $localStorage.wLogger_myLogs = logs;
-
-                }
-                else
-                    logs = $localStorage.wLogger_myLogs;
+                logs = JSON.parse(localStorage["wLogger"]);
 
 
                 return logs;
@@ -25,7 +21,7 @@ angular.module('wloggerApp.services').
 
             add: function(item){
                 logs.push(item);
-                $localStorage.wLogger_myLogs = logs;
+                localStorage["wLogger"] = JSON.stringify(logs);
             }
         }
 

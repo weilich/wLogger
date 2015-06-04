@@ -1,8 +1,7 @@
 angular.module('wloggerApp', [
     "ngRoute",
     "wloggerApp.controllers",
-    "wloggerApp.services",
-    "ngStorage"
+    "wloggerApp.services"
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
@@ -31,4 +30,4 @@ angular.module('wloggerApp', [
 
 
 angular.module('wloggerApp.controllers', []);
-angular.module('wloggerApp.services', ['ngStorage']);
+angular.module('wloggerApp.services', []);
