@@ -1,0 +1,18 @@
+
+
+<div class="container">
+    <h2>My Log</h2>
+ 
+    <ul class="list-group" ng-repeat="log in lstCtrl.myLoggers()">
+        <li class="list-group-item">
+            <a href="#/addRecord/{{log.logId}}">
+                <div> {{log.logName}}</div>
+            </a>
+        </li>
+    </ul>
+
+    <a href="#/create/2" class="btn btn-info btn-lg">Add new log</a>
+    <button ng-click="lstCtrl.deleteMyLoggers()" class="btn btn-info btn-lg">Delete logs</button>
+
+</div>
+

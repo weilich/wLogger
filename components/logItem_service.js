@@ -13,7 +13,7 @@ angular.module('wloggerApp.services').
 
         return{
             list: function(){
-                logs = JSON.parse(localStorage["wLogger"]);
+                logs = JSON.parse(localStorage["wLogger"]||"null");
 
 
                 return logs;
@@ -22,6 +22,10 @@ angular.module('wloggerApp.services').
             add: function(item){
                 logs.push(item);
                 localStorage["wLogger"] = JSON.stringify(logs);
+            },
+
+            deleteAll: function(){
+                delete window.localStorage["wLogger"];
             }
         }
 

@@ -6,19 +6,23 @@ angular.module('wloggerApp', [
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
         .when('/',
-             { templateUrl: "list/list.html", controller: "list_controller", controllerAs: 'lstCtrl' }
+             { templateUrl: "logs/list/list.html", controller: "list_controller", controllerAs: 'lstCtrl' }
             )
         .when('/list',
-            { templateUrl: "list/list.html", controller: "list_controller", controllerAs: 'lstCtrl' }
+            { templateUrl: "logs/list/list.html", controller: "list_controller", controllerAs: 'lstCtrl' }
             )
         .when('/list/:id',
-           { templateUrl: "list/list.html", controller: "list_controller", controllerAs: 'lstCtrl' }
+           { templateUrl: "logs/list/list.html", controller: "list_controller", controllerAs: 'lstCtrl' }
         )
+
         .when('/detail/:id',
-           { templateUrl: "detail/detail.html"}
+           { templateUrl: "logs/detail/detail.html"}
         )
         .when('/create/:id',
-            { templateUrl: "create/create.html", controller: "create_controller", controllerAs: 'createCtrl' }
+            { templateUrl: "logs/create/create.html", controller: "create_controller", controllerAs: 'createCtrl' }
+        )
+        .when('/addRecord/:id',
+            { templateUrl: "records/create/addRecord.html", controller: "addRecord_controller", controllerAs: 'addRecordCtrl' }
         )
         .otherwise({
             redirectTo: 'list/list.html'
