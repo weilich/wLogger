@@ -3,18 +3,15 @@ angular.module('wloggerApp.services').
             if(Modernizr.localstorage == false)
                 $log.info("local storage not working");
 
-        var logs = [
-                    //{logId:1, logName:'Log 1', logStatus:'A'},
-                    //{logId:2, logName:'log 2', logStatus:'A'},
-                    //{logId:3, logName:'log 3', logStatus:'I'}
-                    ];
+        var logs = [];
+        var tm = JSON.parse(localStorage["wLogger"]||"null");
+        if(tm != null)
+            logs = tm;
 
        // localStorage["wLogger"] = JSON.stringify(logs);
 
         return{
             list: function(){
-                logs = JSON.parse(localStorage["wLogger"]||"null");
-
 
                 return logs;
             },
@@ -26,6 +23,14 @@ angular.module('wloggerApp.services').
 
             deleteAll: function(){
                 delete window.localStorage["wLogger"];
+            },
+
+            getNextID: function(){
+                if(logs.length == 0)
+                    return 1;
+                var id = Math.max.apply(Math, logs.map(function(o){return o.logId;}));
+                return id + 1;
+
             }
         }
 

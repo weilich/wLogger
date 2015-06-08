@@ -1,9 +1,23 @@
 <div class="container">
-    <h2> Add new log</h2>
-    <form role="form" ng-submit="createCtrl.saveRecord()">
+    <h2> Add a record</h2>
+
+
+
+    <form role="form" ng-submit="addRecordCtrl.saveRecord()">
+
+
         <div class="form-group">
+            <label for="selLog">Add to:</label>
+            <select ng-model="addRecordCtrl.selectedLog" ng-options="log.logName for log in addRecordCtrl.logs|orderBy:['logName']" id="selLog">
+
+            </select>
+        </div>
+
+        <div class="form-group">
+
+
             <label for="recordNote">Note:</label>
-            <input type="text" class="form-control" id="recordNote" placeholder="Enter name" ng-model="createCtrl.recordNote">
+            <input type="text" class="form-control" id="recordNote" placeholder="Enter name" ng-model="addRecordCtrl.recordNote">
         </div>
 
         <input type="submit" class="btn btn-default" value="Save">
